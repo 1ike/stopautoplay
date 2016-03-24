@@ -1,4 +1,4 @@
-// Stop autoplay on youtube (for Firefox with Greasemonkey) 
+// Stop autoplay on youtube page (for Firefox with Greasemonkey) 
 
 
 window.addEventListener("DOMNodeInserted", function (e) {
