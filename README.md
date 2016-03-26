@@ -8,4 +8,5 @@ Stop autoplay on
     http*://www.youtube.com/*   (Use it in Greasemonkey with  // @include )
   
 
+* Work at user page and at single video page.
 * Not preventing buffering only pause video at start.
