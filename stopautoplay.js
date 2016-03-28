@@ -3,20 +3,22 @@
 
 // For single video page
 var player = document.getElementsByTagName('VIDEO')[0];
-if (player) player.oncanplay = pauseVideo;
+if (player)  player.oncanplay = pauseVideo;
+
 
 // For user page
 window.addEventListener("DOMNodeInserted", function (e) {
    if (e.target.tagName == 'VIDEO') {
-    player = e.target;
-    player.oncanplay = pauseVideo;
+      player = e.target;
+      player.oncanplay = pauseVideo;
    }
 });
 
 
 function pauseVideo () {
   var self = this;
-  setTimeout (function() { 
-   self.pause();
+  setTimeout (function() {
+     self.pause();
+     self.oncanplay = null;
   }, 0);
 }
