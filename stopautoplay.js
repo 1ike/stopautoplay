@@ -1,14 +1,15 @@
-// Stop autoplay on youtube page (for Firefox with Greasemonkey/Tampermonkey) 
+// ==UserScript==
+// @name        YouTube Stop Autoplay
+// @namespace   youtube
+// @version     0.0.3
+// @description Stop autoplay on youtube page (for Firefox with Greasemonkey|Tampermonkey) 
+// @include     http*://www.youtube.com/*
+// @grant       me
+// ==/UserScript==
 
 
-// For single video page  (comment these lines if need not)
-var player = document.getElementsByTagName('VIDEO')[0];
-if (player)  player.oncanplay = () => player.pause();
-
-
-// For user page  (comment these lines if need not)
 window.addEventListener("DOMNodeInserted", function (e) {
-   if (e.target.tagName == 'VIDEO' && document.querySelector('.branded-page-box VIDEO')) {
+   if (e.target.tagName == 'VIDEO') {
       player = e.target;
       player.oncanplay = () => player.pause();
    }
