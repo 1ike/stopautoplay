@@ -13,7 +13,7 @@ const target = document.body;
 const observer = new MutationObserver(function(mutations) {
 
     mutations.forEach(function(mutation) {
-        if (mutation.target.id == 'movie_player') {
+        if (mutation.target.id == 'movie_player' || mutation.target.id == 'player-container') {
 
             player = target.querySelector('video');
 
