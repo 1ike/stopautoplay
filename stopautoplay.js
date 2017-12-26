@@ -17,7 +17,10 @@ const observer = new MutationObserver(function(mutations) {
 
             player = target.querySelector('video');
 
-            player.onloadeddata = player.pause;
+            player.onloadeddata = () => {
+                player.pause();
+                player.onloadeddata = null;
+            };
 
             observer.disconnect();
         }
