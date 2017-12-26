@@ -1,16 +1,34 @@
 // ==UserScript==
 // @name        YouTube Stop Autoplay
 // @namespace   youtube
-// @version     0.0.3
+// @version     0.0.4
 // @description Stop autoplay on youtube page (for Firefox with Greasemonkey|Tampermonkey) 
 // @include     http*://www.youtube.com/*
 // @grant       me
 // ==/UserScript==
 
 
-window.addEventListener("DOMNodeInserted", function (e) {
-   if (e.target.tagName == 'VIDEO') {
-      player = e.target;
-      player.oncanplay = () => player.pause();
-   }
+const target = document.body;
+
+const observer = new MutationObserver(function(mutations) {
+
+    mutations.forEach(function(mutation) {
+        if (mutation.target.id == 'movie_player') {
+
+            player = target.querySelector('video');
+
+            player.onloadeddata = player.pause;
+
+            observer.disconnect();
+        }
+    });
 });
+
+// конфигурация нашего observer:
+const config = { childList: true, subtree: true };
+
+// передаём в качестве аргументов целевой элемент и его конфигурацию
+observer.observe(target, config);
+
+// позже можно остановить наблюдение
+//observer.disconnect();
