@@ -52,7 +52,7 @@
     const fullscreenElement = document.fullscreenElement ||
       document.mozFullScreenElement ||
       document.webkitFullscreenElement ||
-      msFullscreenElement;
+      document.msFullscreenElement;
 
     if (fullscreenElement) {
       const player = fullscreenElement.querySelector('video');
